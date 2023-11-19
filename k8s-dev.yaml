@@ -1,36 +1,36 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jenkins-demo
-  namespace: devlopment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: jenkins-demo
-  template:
-    metadata:
-      labels:
-        app: jenkins-demo
-    spec:
-      containers:
-      - image: xianchao/jenkins-demo:<BUILD_TAG>
-        imagePullPolicy: IfNotPresent
-        name: jenkins-demo
-        env:
-        - name: branch
-          value: <BRANCH_NAME>
----
-apiVersion: v1
-kind: Service
-metadata:
-   name: demo
-   namespace: devlopment
-spec:
-   selector:
-     app: jenkins-demo
-   type: NodePort
-   ports:
-   - port: 18888
-     targetPort: 18888
-     nodePort: 31889
+ api版本 :应用程序/v1
+友善的 :部署
+元数据 :
+名称 :詹金斯演示
+命名空间 :发展
+规范 :
+复制副本 : one
+选择器 :
+ 匹配标签 :
+应用程序 :詹金斯演示
+模板 :
+元数据 :
+标签 :
+应用程序 :詹金斯演示
+规范 :
+容器 :
+ -形象 :王国宾/詹金斯-德莫 :<BUILD_TAG>
+图像拉动策略 : 如果不存在
+名称 :詹金斯演示
+ 环境价值 :
+ -名称 :分支
+价值 :<BRANCH_NAME>
+ ---
+ api版本 :第1版
+友善的 :服务
+元数据 :
+名称 :演示
+命名空间 :发展
+规范 :
+选择器 :
+应用程序 :詹金斯演示
+类型 : 节点端口
+端口 :
+ -港口 : eighteen thousand eight hundred and eighty-eight
+ 目标端口 : eighteen thousand eight hundred and eighty-eight
+ 节点端口 : thirty-one thousand eight hundred and eighty-nine
